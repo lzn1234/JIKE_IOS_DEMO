@@ -20,7 +20,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initViews];
+        [self _initViews];
     }
     return self;
 }
@@ -49,28 +49,28 @@
 
 #pragma mark -< init SubViews >
 
-- (void)initViews {
+- (void)_initViews {
     
     self.backgroundView = ({
         UIView *view = [[UIView alloc]initWithFrame:self.bounds];
         view.backgroundColor = [UIColor blackColor];
         view.alpha = 0.5;
         // 背景添加点击事件，执行隐藏弹窗
-        [view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickAction)]];
+        [view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(_clickAction)]];
         view;
     });
     [self addSubview:self.backgroundView];
     
     self.deleteButton = ({
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-        [button addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(_clickAction) forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor = [UIColor redColor];
         button;
     });
     [self addSubview:self.deleteButton];
 }
 
-- (void)clickAction {
+- (void)_clickAction {
     if (self.deleteBlock) {
         self.deleteBlock();
     }

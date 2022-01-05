@@ -7,6 +7,7 @@
 
 #import "LZNormalTableViewCell.h"
 #import "LZListModel.h"
+#import "SDWebImage.h"
 
 @interface LZNormalTableViewCell ()
 
@@ -24,72 +25,112 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self.contentView addSubview:({
-            self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 15, 270, 50)];
-            self.titleLabel.font = [UIFont systemFontOfSize:12];
-            self.titleLabel.textColor = [UIColor blackColor];
-            self.titleLabel;
-        })];
         
-        [self.contentView addSubview:({
-            self.sourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 70, 50, 20)];
-            self.sourceLabel.font = [UIFont systemFontOfSize:12];
-            self.sourceLabel.textColor = [UIColor grayColor];
-            self.sourceLabel;
-        })];
-        
-        [self.contentView addSubview:({
-            self.commentLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 70, 50, 20)];
-            self.commentLabel.font = [UIFont systemFontOfSize:12];
-            self.commentLabel.textColor = [UIColor grayColor];
-            self.commentLabel;
-        })];
-        
-        [self.contentView addSubview:({
-            self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(150, 70, 50, 20)];
-            self.timeLabel.font = [UIFont systemFontOfSize:12];
-            self.timeLabel.textColor = [UIColor grayColor];
-            self.timeLabel;
-        })];
-        
-        [self.contentView addSubview:({
-            self.coverImageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 15, 100, 70)];
-            self.coverImageView.backgroundColor = [UIColor redColor];
-            self.coverImageView;
-        })];
-        
-//        [self.contentView addSubview:({
-//            self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(290, 80, 30, 20)];
-//            self.deleteButton.backgroundColor = [UIColor blueColor];
-//            [self.deleteButton setTitle:@"X" forState:UIControlStateNormal];
-//            [self.deleteButton addTarget:self action:@selector(deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//            self.deleteButton;
-//        })];
+        [self _initView];
     }
     return self;
 }
 
-- (void)layoutTableViewCellByModel:(LZListModel *)model{
+#pragma mark -< init SubViews and load data >
 
+- (void)_initView {
+    
+    self.titleLabel = ({
+        UILabel *label = [UILabel new];
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor blackColor];
+        label;
+    });
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).offset(20);
+        make.top.equalTo(self.contentView).offset(15);
+        make.size.equalTo(CGSizeMake(270, 50));
+    }];
+    
+    self.sourceLabel = ({
+        UILabel *label = [UILabel new];
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor grayColor];
+        [label sizeToFit];
+        label;
+    });
+    [self.contentView addSubview:self.sourceLabel];
+    [self.sourceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleLabel);
+        make.top.equalTo(self.titleLabel.bottom).offset(5);
+    }];
+    
+    
+    self.commentLabel = ({
+        UILabel *label = [UILabel new];
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor grayColor];
+        [label sizeToFit];
+        label;
+    });
+    [self.contentView addSubview:self.commentLabel];
+    [self.commentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.sourceLabel.right).offset(15);
+        make.top.equalTo(self.sourceLabel);
+    }];
+    
+    self.timeLabel = ({
+        UILabel *label = [UILabel new];
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor grayColor];
+        [label sizeToFit];
+        label;
+    });
+    [self.contentView addSubview:self.timeLabel];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.commentLabel.right).offset(15);
+        make.top.equalTo(self.sourceLabel);
+    }];
+    
+    self.coverImageView = ({
+        UIImageView *imageView = [UIImageView new];
+        imageView;
+    });
+    [self.contentView addSubview:self.coverImageView];
+    [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-15);
+        make.top.equalTo(self.contentView).offset(15);
+        make.size.equalTo(CGSizeMake(100, 70));
+    }];
+
+    
+//        [self.contentView addSubview:({
+//            self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(290, 80, 30, 20)];
+//            self.deleteButton.backgroundColor = [UIColor blueColor];
+//            [self.deleteButton setTitle:@"X" forState:UIControlStateNormal];
+//            [self.deleteButton addTarget:self action:@selector(_deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//            self.deleteButton;
+//        })];
+}
+
+#pragma mark -< public method >
+
+- (void)layoutTableViewCellByModel:(LZListModel *)model{
+        
     self.titleLabel.text = model.title;
     
     self.sourceLabel.text = model.authorName;
     [self.sourceLabel sizeToFit];
     
     self.commentLabel.text = model.category;
-    [self.commentLabel sizeToFit];
-    self.commentLabel.frame = CGRectMake(CGRectGetMaxX(self.sourceLabel.frame) + 15, self.commentLabel.frame.origin.y, self.commentLabel.frame.size.width, self.commentLabel.frame.size.height);
     
     self.timeLabel.text = model.date;
     [self.timeLabel sizeToFit];
     self.timeLabel.frame = CGRectMake(CGRectGetMaxX(self.commentLabel.frame) + 15, self.timeLabel.frame.origin.y, self.timeLabel.frame.size.width, self.timeLabel.frame.size.height);
     
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.thumbnailPicS1]]];
+    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnailPicS1]];
     
-    self.coverImageView.image = image;
 }
 
-- (void)deleteBtnClick:(UIButton *)sender {
+#pragma mark -< private method >
+
+- (void)_deleteBtnClick:(UIButton *)sender {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewCell:deleteBtn:)]) {
         [self.delegate tableViewCell:self deleteBtn:sender];

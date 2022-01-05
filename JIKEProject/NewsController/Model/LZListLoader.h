@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^LZListLoaderFinishBlock)(BOOL success, NSArray<LZListModel *>* dataArray);
 
 /**
-列表数据请求
+列表数据请求 和 列表数据存档
  */
 @interface LZListLoader : NSObject
 

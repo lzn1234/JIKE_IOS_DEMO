@@ -15,6 +15,9 @@
 		1E4904F126E9DF2200E10375 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904F026E9DF2200E10375 /* main.m */; };
 		1E49053226F1D90000E10375 /* LZListLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E49053126F1D90000E10375 /* LZListLoader.m */; };
 		1E9EFD04276CA86F002C0D95 /* LZListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EFD03276CA86F002C0D95 /* LZListModel.m */; };
+		1E9EFD082770A4DF002C0D95 /* LZVedioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EFD072770A4DF002C0D95 /* LZVedioViewController.m */; };
+		1E9EFD0F27776B5A002C0D95 /* LZVedioCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EFD0E27776B5A002C0D95 /* LZVedioCollectionViewCell.m */; };
+		1E9EFD1227800C6F002C0D95 /* LZVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EFD1127800C6F002C0D95 /* LZVideoPlayer.m */; };
 		1ECE006626FC625200A244B8 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ECE006526FC625200A244B8 /* Empty.xib */; };
 		1EECB7952764CD68003745FE /* LZNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EECB7942764CD68003745FE /* LZNewsViewController.m */; };
 		1EECB7AE2767763B003745FE /* LZRecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EECB7AD2767763B003745FE /* LZRecommendController.m */; };
@@ -40,6 +43,14 @@
 		1E49053126F1D90000E10375 /* LZListLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZListLoader.m; sourceTree = "<group>"; };
 		1E9EFD02276CA86F002C0D95 /* LZListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZListModel.h; sourceTree = "<group>"; };
 		1E9EFD03276CA86F002C0D95 /* LZListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZListModel.m; sourceTree = "<group>"; };
+		1E9EFD062770A4DF002C0D95 /* LZVedioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZVedioViewController.h; sourceTree = "<group>"; };
+		1E9EFD072770A4DF002C0D95 /* LZVedioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZVedioViewController.m; sourceTree = "<group>"; };
+		1E9EFD0B27773F5E002C0D95 /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
+		1E9EFD0C27776A56002C0D95 /* SizeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SizeHeader.h; sourceTree = "<group>"; };
+		1E9EFD0D27776B5A002C0D95 /* LZVedioCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZVedioCollectionViewCell.h; sourceTree = "<group>"; };
+		1E9EFD0E27776B5A002C0D95 /* LZVedioCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZVedioCollectionViewCell.m; sourceTree = "<group>"; };
+		1E9EFD1027800C6F002C0D95 /* LZVideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZVideoPlayer.h; sourceTree = "<group>"; };
+		1E9EFD1127800C6F002C0D95 /* LZVideoPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZVideoPlayer.m; sourceTree = "<group>"; };
 		1ECE006526FC625200A244B8 /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		1EECB7932764CD68003745FE /* LZNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNewsViewController.h; sourceTree = "<group>"; };
 		1EECB7942764CD68003745FE /* LZNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZNewsViewController.m; sourceTree = "<group>"; };
@@ -102,6 +113,8 @@
 				1E4904EF26E9DF2200E10375 /* Info.plist */,
 				1E4904F026E9DF2200E10375 /* main.m */,
 				1ECE006526FC625200A244B8 /* Empty.xib */,
+				1E9EFD0C27776A56002C0D95 /* SizeHeader.h */,
+				1E9EFD0B27773F5E002C0D95 /* PrefixHeader.h */,
 			);
 			path = JIKEProject;
 			sourceTree = "<group>";
@@ -109,6 +122,8 @@
 		1E63ABD126F8856E003C94D4 /* VedioController */ = {
 			isa = PBXGroup;
 			children = (
+				1E9EFD0A27773EF5002C0D95 /* View */,
+				1E9EFD0927773EEF002C0D95 /* Controller */,
 			);
 			path = VedioController;
 			sourceTree = "<group>";
@@ -153,6 +168,26 @@
 			path = RecommendController;
 			sourceTree = "<group>";
 		};
+		1E9EFD0927773EEF002C0D95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1E9EFD062770A4DF002C0D95 /* LZVedioViewController.h */,
+				1E9EFD072770A4DF002C0D95 /* LZVedioViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1E9EFD0A27773EF5002C0D95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E9EFD0D27776B5A002C0D95 /* LZVedioCollectionViewCell.h */,
+				1E9EFD0E27776B5A002C0D95 /* LZVedioCollectionViewCell.m */,
+				1E9EFD1027800C6F002C0D95 /* LZVideoPlayer.h */,
+				1E9EFD1127800C6F002C0D95 /* LZVideoPlayer.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1EECB7B82768F71D003745FE /* NewsController */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,8 +195,6 @@
 				1E9EFD00276CA7B5002C0D95 /* View */,
 				1E9EFCFF276CA7A4002C0D95 /* Controller */,
 				1EECB7B92768F755003745FE /* Detail */,
-				1EECB7B2276858CA003745FE /* LZDetailController.h */,
-				1EECB7B3276858CA003745FE /* LZDetailController.m */,
 			);
 			path = NewsController;
 			sourceTree = "<group>";
@@ -169,6 +202,8 @@
 		1EECB7B92768F755003745FE /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				1EECB7B2276858CA003745FE /* LZDetailController.h */,
+				1EECB7B3276858CA003745FE /* LZDetailController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -288,13 +323,16 @@
 			files = (
 				1E49053226F1D90000E10375 /* LZListLoader.m in Sources */,
 				1EECB7AE2767763B003745FE /* LZRecommendController.m in Sources */,
+				1E9EFD0F27776B5A002C0D95 /* LZVedioCollectionViewCell.m in Sources */,
 				1EECB7B4276858CA003745FE /* LZDetailController.m in Sources */,
 				1EECB7B727689565003745FE /* LZDeleteCellView.m in Sources */,
+				1E9EFD082770A4DF002C0D95 /* LZVedioViewController.m in Sources */,
 				1E4904E026E9DF2000E10375 /* AppDelegate.m in Sources */,
 				1EECB7B127678B1B003745FE /* LZNormalTableViewCell.m in Sources */,
 				1E4904F126E9DF2200E10375 /* main.m in Sources */,
 				1E9EFD04276CA86F002C0D95 /* LZListModel.m in Sources */,
 				1E4904E326E9DF2000E10375 /* SceneDelegate.m in Sources */,
+				1E9EFD1227800C6F002C0D95 /* LZVideoPlayer.m in Sources */,
 				1EECB7952764CD68003745FE /* LZNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +400,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JIKEProject/PrefixHeader.h";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -419,6 +458,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JIKEProject/PrefixHeader.h";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

@@ -7,7 +7,9 @@
 
 #import "SceneDelegate.h"
 #import "LZNewsViewController.h"
+#import "LZVedioViewController.h"
 #import "LZRecommendController.h"
+#import "Masonry.h"
 
 @interface SceneDelegate ()
 
@@ -21,13 +23,9 @@
     UITabBarController *tabBar = [UITabBarController new];
     tabBar.tabBar.backgroundColor = [UIColor whiteColor];
     
-    LZNewsViewController *vc1 = [LZNewsViewController new];
+    LZNewsViewController *newsController = [LZNewsViewController new];
     
-    UIViewController *vc2 = [UIViewController new];
-    vc2.view.backgroundColor = [UIColor redColor];
-    vc2.tabBarItem.title = @"视频";
-    vc2.tabBarItem.image = [UIImage imageNamed:@"like"];
-    vc2.tabBarItem.selectedImage = [UIImage imageNamed:@"like_selected"];
+    LZVedioViewController *vedioController = [LZVedioViewController new];
 
     LZRecommendController *commendController = [LZRecommendController new];
 
@@ -37,7 +35,8 @@
     vc4.tabBarItem.image = [UIImage imageNamed:@"video"];
     vc4.tabBarItem.selectedImage = [UIImage imageNamed:@"video_selected"];
 
-    [tabBar setViewControllers:@[vc1, vc2, commendController, vc4]];
+    [tabBar setViewControllers:@[newsController, vedioController, commendController, vc4]];
+    tabBar.selectedIndex = 1;
     
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:tabBar];
     

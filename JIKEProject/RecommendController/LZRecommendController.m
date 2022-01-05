@@ -6,6 +6,7 @@
 //
 
 #import "LZRecommendController.h"
+#import "AFNetworking.h"
 
 @interface LZRecommendController ()<UIScrollViewDelegate>
 
@@ -27,22 +28,12 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
-    scrollView.backgroundColor = [UIColor grayColor];
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 5, self.view.frame.size.height);
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    NSArray *colorArr = @[[UIColor redColor],[UIColor blueColor],[UIColor yellowColor],[UIColor greenColor],[UIColor grayColor]];
-    
-    for (int i = 0; i < 5; i++) {
-        [scrollView addSubview:({
-            UIView *view = [[UIView alloc]initWithFrame:CGRectMake(i * (scrollView.frame.size.width), 0, scrollView.frame.size.width, scrollView.frame.size.height)];
-            view.backgroundColor = colorArr[i];
-            view;
-        })];
-    }
-    
-    [self.view addSubview:scrollView];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
+    [manager GET:@"http://baobab.kaiyanapp.com/api/v4/discovery/hot?start=1&num=1" parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        @"";
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 @end
